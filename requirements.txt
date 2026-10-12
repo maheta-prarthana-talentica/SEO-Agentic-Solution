@@ -1,0 +1,44 @@
+# Core web/API
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+httpx
+
+# Crawling / parsing
+beautifulsoup4
+lxml
+
+# Optional JS-rendered crawling (graceful fallback if not installed)
+playwright
+
+# Orchestration
+langgraph
+langchain-core
+
+# LLM
+anthropic
+
+# RAG / vector store
+chromadb
+
+# Repo intelligence
+tree-sitter
+tree-sitter-languages
+GitPython
+
+# GitHub integration
+PyGithub
+
+# Utilities
+tenacity
+PyYAML
+
+# Testing
+pytest
+pytest-asyncio
+
+# NOTE: versions intentionally left unpinned -- this repo has not yet been installed/run
+# anywhere (see README "Prerequisites"). After your first `pip install -r requirements.txt`
+# in a real environment, run `pip freeze > requirements.lock.txt` and commit that for
+# reproducible installs.

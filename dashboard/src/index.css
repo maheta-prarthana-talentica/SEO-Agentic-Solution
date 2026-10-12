@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(26, 107, 138, 0.18), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(196, 92, 38, 0.12), transparent),
+    #e8eef5;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Fraunces", Georgia, serif;
+}

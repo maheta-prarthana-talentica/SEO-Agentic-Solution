@@ -1,0 +1,37 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Data / generated
+reports/
+logs/
+chroma_db/
+repo_cache/
+*.log
+
+# Node / dashboard
+node_modules/
+dashboard/dist/
+/package-lock.json
+
+# Documents (not pushed)
+docs/
+*.docx
+*.doc
+*.pdf
+*.pptx
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

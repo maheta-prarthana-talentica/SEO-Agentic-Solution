@@ -1,0 +1,14 @@
+# Cost-control guardrail (Section 8 NFR "Cost Control"). Enforced by tools/llm_client.py.
+# When a run's cumulative token usage crosses `hard_cap_tokens`, the LLM client raises
+# BudgetExceededError, the orchestrator halts further auto-generation for that run, and
+# the Reporting Agent flags it for human review instead of silently truncating output.
+
+llm_token_budget:
+  soft_warn_tokens: 120000 # log a warning, keep going
+  hard_cap_tokens: 200000 # halt further generation, flag run for review
+  per_page_content_scoring_cap_tokens: 4000
+  per_finding_remediation_cap_tokens: 6000
+
+rate_limits:
+  max_concurrent_llm_calls: 4
+  max_concurrent_crawl_requests: 6

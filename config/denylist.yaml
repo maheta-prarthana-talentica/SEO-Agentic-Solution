@@ -1,0 +1,48 @@
+# Hard gate enforced in code (tools/diff_utils.py::enforce_denylist), never just a prompt
+# instruction. Any generated diff touching a path matching one of these patterns is
+# rejected outright and the corresponding finding is downgraded to "manual" /
+# recommendation-only (Section 6.4 of the requirements doc).
+#
+# Patterns are matched with fnmatch-style globbing against the repo-relative path.
+
+paths:
+  # CI/CD
+  - ".github/workflows/**"
+  - ".gitlab-ci.yml"
+  - "Jenkinsfile"
+  - "**/*.yml.ci"
+
+  # Secrets / environment
+  - ".env"
+  - ".env.*"
+  - "**/*secret*"
+  - "**/*credentials*"
+  - "**/*.pem"
+  - "**/*.key"
+
+  # Auth / payment / security-sensitive modules
+  - "**/auth/**"
+  - "**/authentication/**"
+  - "**/payments/**"
+  - "**/billing/**"
+  - "**/*middleware/auth*"
+
+  # Infra as code
+  - "**/terraform/**"
+  - "**/*.tfstate"
+  - "Dockerfile"
+  - "docker-compose*.yml"
+
+  # Package/lock manifests (never rewritten by the SEO agent)
+  - "package-lock.json"
+  - "yarn.lock"
+  - "poetry.lock"
+  - "requirements*.txt"
+
+extensions_never_touched:
+  - ".pem"
+  - ".key"
+  - ".p12"
+
+max_diff_lines_per_commit: 400
+max_files_per_commit: 15

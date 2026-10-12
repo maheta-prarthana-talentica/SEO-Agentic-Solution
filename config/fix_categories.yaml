@@ -1,0 +1,66 @@
+# Fix-category automation levels, per Section 7.4 of the requirements doc.
+# automation_level: one of "auto-fix" | "assisted" | "manual"
+#
+# Used by agents/prioritization.py to tag each finding's fix_type, and by
+# agents/code_remediation_agent.py to decide which findings it will attempt to patch.
+
+fix_categories:
+  missing_or_duplicate_meta_title:
+    automation_level: auto-fix
+    commit_scope: meta-tags
+    description: Generate a unique, keyword-relevant title per page.
+
+  missing_or_duplicate_meta_description:
+    automation_level: auto-fix
+    commit_scope: meta-tags
+    description: Generate a unique, keyword-relevant meta description per page.
+
+  missing_image_alt_text:
+    automation_level: auto-fix
+    commit_scope: alt-text
+    description: Generate descriptive alt text from image context + surrounding copy.
+
+  missing_or_incorrect_canonical:
+    automation_level: auto-fix
+    commit_scope: canonical-tags
+    description: Insert or correct the canonical URL.
+
+  missing_structured_data:
+    automation_level: auto-fix
+    commit_scope: structured-data
+    description: Inject JSON-LD (Article, Product, Breadcrumb, Organization schemas).
+
+  broken_internal_link:
+    automation_level: auto-fix
+    commit_scope: internal-links
+    description: Update or remove dead internal links.
+
+  sitemap_or_robots_error:
+    automation_level: auto-fix
+    commit_scope: sitemap-robots
+    description: Regenerate a corrected sitemap.xml / robots.txt.
+
+  heading_hierarchy_issue:
+    automation_level: assisted
+    commit_scope: heading-structure
+    description: Restructure heading tags in the template; requires a review note.
+
+  core_web_vitals_issue:
+    automation_level: assisted
+    commit_scope: performance
+    description: Suggest lazy-loading, image format/size changes; requires a review note.
+
+  thin_or_duplicate_content:
+    automation_level: manual
+    commit_scope: null
+    description: Flag with rewrite guidance; not code-fixable.
+
+  redirect_chain:
+    automation_level: assisted
+    commit_scope: redirects
+    description: Collapse multi-hop redirect chains to a single redirect.
+
+  mobile_usability_issue:
+    automation_level: manual
+    commit_scope: null
+    description: Viewport/tap-target/font-size issues; usually needs design input.
